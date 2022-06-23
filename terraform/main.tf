@@ -1,11 +1,3 @@
-terraform {
-  backend "azurerm" {
-    resource_group_name  = "RGContainer"
-    storage_account_name = "samentortfstate"
-    container_name       = "contmentortfstate"
-    key                  = "contmentortfstate.tfstate"
-  }
-}
  
 provider "azurerm" {
   # The "feature" block is required for AzureRM provider 2.x.
