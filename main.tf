@@ -74,7 +74,7 @@ resource "azurerm_firewall_nat_rule_collection" "net" {
     name = "rulednatnginx80"
 
     source_addresses = [
-      "10.0.0.0/16",
+      "*",
     ]
 
     destination_ports = [
