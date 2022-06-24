@@ -53,7 +53,8 @@ resource "azurerm_firewall" "net" {
   name                = "tffwnginx"
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
-  #sku_name            = standard
+  sku_name            = AZFW_VNet
+  sku_tier            = Standard
 
   ip_configuration {
     name                 = "configuration"
