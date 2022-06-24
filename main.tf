@@ -15,10 +15,8 @@ provider "azurerm" {
   features {}
 }
  
-data "azurerm_client_config" "current" {}
- 
-#Create Resource Group
-resource "azurerm_resource_group" "RGTF" {
-  name     = "tamops"
-  location = "eastus2"
+#data "azurerm_client_config" "current" {}
+data "azurerm_resource_group" "rg" {
+  name = "RGContainer"
 }
+
