@@ -34,12 +34,12 @@ resource "azurerm_subnet" "fwnet" {
   address_prefixes     = ["192.168.140.0/24"]
 }
 
-#resource "azurerm_subnet" "acinet" {
-#  name                 = "aci-subnet"
-#  resource_group_name  = data.azurerm_resource_group.rg.name
-#  virtual_network_name = azurerm_virtual_network.net.name
-#  address_prefixes     = ["192.168.141.0/24"]
-#}
+resource "azurerm_subnet" "acinet" {
+  name                 = "aci-subnet"
+  resource_group_name  = data.azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.net.name
+  address_prefixes     = ["192.168.141.0/24"]
+}
 
 
 
