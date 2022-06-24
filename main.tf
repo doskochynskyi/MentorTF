@@ -27,21 +27,14 @@ resource "azurerm_virtual_network" "net" {
   resource_group_name = data.azurerm_resource_group.rg.name
 }
 
-resource "azurerm_virtual_network" "net" {
-  name                = "tfvnetsite"
-  address_space       = ["192.168.222.0/24"]
-  location            = data.azurerm_resource_group.rg.location
-  resource_group_name = data.azurerm_resource_group.rg.name
-}
-
-resource "azurerm_subnet" "net" {
+resource "azurerm_subnet" "fwnet" {
   name                 = "AzureFirewallSubnet"
   resource_group_name  = data.azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.net.name
   address_prefixes     = ["192.168.140.0/24"]
 }
 
-#resource "azurerm_subnet" "net" {
+#resource "azurerm_subnet" "acinet" {
 #  name                 = "aci-subnet"
 #  resource_group_name  = data.azurerm_resource_group.rg.name
 #  virtual_network_name = azurerm_virtual_network.net.name
