@@ -41,5 +41,24 @@ resource "azurerm_subnet" "acinet" {
   address_prefixes     = ["192.168.141.0/24"]
 }
 
+resource "azurerm_public_ip" "net" {
+  name                = "tfpipnginx"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
+resource "azurerm_firewall" "net" {
+  name                = "tffwnginx"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                 = "configuration"
+    subnet_id            = azurerm_subnet.fwnet.id
+    public_ip_address_id = azurerm_public_ip.net.id
+  }
+}
 
 
