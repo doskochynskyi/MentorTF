@@ -63,4 +63,35 @@ resource "azurerm_firewall" "net" {
   }
 }
 
+resource "azurerm_firewall_nat_rule_collection" "net" {
+  name                = "natnginx80"
+  azure_firewall_name = azurerm_firewall.net.name
+  resource_group_name = data.azurerm_resource_group.rg.name
+  priority            = 100
+  action              = "Dnat"
+
+  rule {
+    name = "rulednatnginx80"
+
+    source_addresses = [
+      "10.0.0.0/16",
+    ]
+
+    destination_ports = [
+      "80",
+    ]
+
+    destination_addresses = [
+      azurerm_public_ip.net.ip_address
+    ]
+
+    translated_port = 80
+
+    translated_address = "192.168.141.4"
+
+    protocols = [
+      "TCP"
+    ]
+  }
+}
 
