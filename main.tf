@@ -23,6 +23,6 @@ data "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "example" {
   name                = "testvnet"
   address_space       = ["10.0.0.0/16"]
-  location            = "West Europe"
+  location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
 }
