@@ -95,3 +95,17 @@ resource "azurerm_firewall_nat_rule_collection" "net" {
   }
 }
 
+resource "azurerm_firewall_network_rule_collection" "rulenginx80" {
+  name                = "rulenginx80"
+  azure_firewall_name = azurerm_firewall.net.name
+  resource_group_name = data.azurerm_resource_group.rg.name
+  priority            = 101
+  action              = "Allow"
+  rule {
+    name                  = "specific-range-firewall-rules"
+    source_addresses      = ["*"]
+    destination_addresses = ["192.168.141.4"]
+    destination_ports     = ["80"]
+    protocols             = ["TCP"]
+  }
+}
