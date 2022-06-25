@@ -41,6 +41,7 @@ resource "azurerm_subnet" "acinet" {
   address_prefixes     = ["192.168.141.0/24"]
 }
 
+/*
 resource "azurerm_public_ip" "net" {
   name                = "tfpipnginx"
   location            = data.azurerm_resource_group.rg.location
@@ -109,3 +110,4 @@ resource "azurerm_firewall_network_rule_collection" "rulenginx80" {
     protocols             = ["TCP"]
   }
 }
+*/
