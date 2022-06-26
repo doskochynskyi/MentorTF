@@ -32,8 +32,8 @@ jobs:
    
   terraform_apply:
     runs-on: ubuntu-latest
-    environment:
-       name: tf_apply
+    #environment:
+     #  name: tf_apply
     
     steps:
       - name: Terraform Apply
