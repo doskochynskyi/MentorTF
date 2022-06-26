@@ -56,5 +56,7 @@ jobs:
           name: tf_plan
           path: ./
       - name: Terraform Apply
-        run: terraform apply -auto-approve "tf_plan"
+        run: |
+          terraform show "tf_plan"
+          terraform apply -auto-approve "tf_plan"
 
