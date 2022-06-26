@@ -28,13 +28,13 @@ jobs:
       #  run: terraform fmt -check
 
       - name: Terraform Plan
-        run: terraform plan -out "tf_plan1" 
+        run: terraform plan -out "tf_plan" 
         
       - name: Upload TF Plan
         uses: actions/upload-artifact@v2
         with:
-          name: tf_plan1
-          path: tf_plan1
+          name: tf_plan
+          path: tf_plan
           if-no-files-found: error
           retention-days: 1
    
