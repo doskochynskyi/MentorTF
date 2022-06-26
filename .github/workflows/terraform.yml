@@ -29,6 +29,13 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-        
+   
+  terraform_apply:
+    runs-on: ubuntu-latest
+    environment:
+       name: tf_apply
+    
+    steps:
       - name: Terraform Apply
         run: terraform apply -auto-approve
+
