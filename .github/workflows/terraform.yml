@@ -62,7 +62,8 @@ jobs:
           path: ./
       - name: Terraform Apply
         run: |
-          # cat "tf_plan"
+          cat "tf_plan"
+          terraform init
           terraform show "tf_plan"
           terraform apply -auto-approve "tf_plan"
 
