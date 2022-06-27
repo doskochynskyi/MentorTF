@@ -38,31 +38,31 @@ jobs:
           if-no-files-found: error
           retention-days: 1
    
-      - name: Terraform Apply
-        run: |
-         terraform show "tf_plan"
-         terraform apply -auto-approve "tf_plan"
+      #- name: Terraform Apply
+      #  run: |
+      #   terraform show "tf_plan"
+      #   terraform apply -auto-approve "tf_plan"
    
-  #terraform_apply:
-   # runs-on: ubuntu-latest
-    #needs: [terraform_plan]
+  terraform_apply:
+    runs-on: ubuntu-latest
+    needs: [terraform_plan]
     #environment:
      #  name: tf_apply
     
-    #steps:
-    #  - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
       
-    #  - name: Setup Terraform
-    #    uses: hashicorp/setup-terraform@v1
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
       
-     # - name: Download TF Plan
-      #  uses: actions/download-artifact@v2
-      #  with:
-       #   name: tf_plan
-        #  path: ./
-     # - name: Terraform Apply
-      #  run: |
-       #   cat "tf_plan"
-        #  terraform show "tf_plan"
-         # terraform apply -auto-approve "tf_plan"
+      - name: Download TF Plan
+        uses: actions/download-artifact@v2
+        with:
+          name: tf_plan
+          path: ./
+      - name: Terraform Apply
+        run: |
+          # cat "tf_plan"
+          terraform show "tf_plan"
+          terraform apply -auto-approve "tf_plan"
 
