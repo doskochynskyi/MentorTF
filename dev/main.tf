@@ -32,7 +32,7 @@ resource "azurerm_resource_group" "rgdev" {
 }
 
 module "network" {
-  source = "github.com/doskochynskyi/MentorTFModules.git//modules/network/"
+  source = "github.com/doskochynskyi/MentorTFModules.git//modules/network"
 
   region = var.region
   resource_group = "RGdev"
