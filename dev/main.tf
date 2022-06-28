@@ -32,7 +32,7 @@ resource "azurerm_resource_group" "rgdev" {
 }
 
 module "network" {
-  source    = "./network"
+  source    = "./modules/network"
 
 }
 
