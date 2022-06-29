@@ -11,6 +11,6 @@ module "firewall" {
 
   region = var.region
   resource_group = "RG${var.prefix}"
-
+  fwnet_id = module.network.fwnet_id
 }
 
