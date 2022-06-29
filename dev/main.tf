@@ -26,16 +26,4 @@ data "azurerm_resource_group" "rg" {
   name = "RGContainer"
 }
 
-resource "azurerm_resource_group" "rgdev" {
-  name     = "RG${var.prefix}"
-  location = "${var.region}"
-}
-
-module "network" {
-  source = "github.com/doskochynskyi/MentorTFModules.git//modules/network"
-
-  region = var.region
-  resource_group = "RGdev"
-
-}
 
