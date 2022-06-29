@@ -6,8 +6,8 @@ module "network" {
 
 }
 
-module "network" {
-  source = "github.com/doskochynskyi/MentorTFModules.git//modules/network"
+module "firewall" {
+  source = "github.com/doskochynskyi/MentorTFModules.git//modules/firewall"
 
   region = var.region
   resource_group = "RG${var.prefix}"
