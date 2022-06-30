@@ -128,7 +128,7 @@ jobs:
         working-directory: prod
     
     environment:
-       name: tf_apply
+       name: tf_apply_prod
     
     steps:
     
