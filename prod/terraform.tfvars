@@ -1,2 +1,2 @@
 region = "west europe"
-prefix = "dev"
+prefix = "prod"
