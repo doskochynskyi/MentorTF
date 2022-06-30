@@ -11,16 +11,18 @@ env:
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
 
-defaults:
-  run:
-    shell: bash
-    working-directory: dev
+        #defaults:
+        #run:
+        #shell: bash
+        #working-directory: dev
 
 jobs:
   terraform_plan:
     runs-on: ubuntu-latest
 
     steps:
+      working-directory: dev
+      
       - uses: actions/checkout@v2
 
       - name: Setup Terraform
@@ -55,6 +57,7 @@ jobs:
        name: tf_apply
     
     steps:
+      working-directory: dev
       - uses: actions/checkout@v2
       
       - name: Setup Terraform
