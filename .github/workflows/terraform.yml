@@ -17,14 +17,15 @@ env:
         #working-directory: dev
 
 jobs:
-  terraform_plan:
+  terraform_plan_dev:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev'
-    working-directory: dev
+    defaults:
+      run:
+        shell: bash
+        working-directory: dev
         
     steps:
-      
-      
+            
       - uses: actions/checkout@v2
 
       - name: Setup Terraform
@@ -52,14 +53,19 @@ jobs:
       #   terraform show "tf_plan"
       #   terraform apply -auto-approve "tf_plan"
    
-  terraform_apply:
+  terraform_apply_dev:
     runs-on: ubuntu-latest
-    needs: [terraform_plan]
+    needs: [terraform_plan_dev]
+    defaults:
+      run:
+        shell: bash
+        working-directory: dev
+    
     environment:
        name: tf_apply
     
     steps:
-      working-directory: dev
+    
       - uses: actions/checkout@v2
       
       - name: Setup Terraform
