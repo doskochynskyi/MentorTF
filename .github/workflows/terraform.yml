@@ -82,4 +82,69 @@ jobs:
           terraform init
           terraform show "tf_plan"
           terraform apply -auto-approve "tf_plan"
+  
+  terraform_plan_prod:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: prod
+        
+    steps:
+            
+      - uses: actions/checkout@v2
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        run: terraform init
+
+      #- name: Terraform Format
+      #  run: terraform fmt -check
+
+      - name: Terraform Plan
+        run: terraform plan -out "tf_plan_prod" 
+        
+      - name: Upload TF Plan
+        uses: actions/upload-artifact@v2
+        with:
+          name: tf_plan_prod
+          path: ./prod/tf_plan_prod
+          if-no-files-found: error
+          retention-days: 1
+   
+      #- name: Terraform Apply
+      #  run: |
+      #   terraform show "tf_plan"
+      #   terraform apply -auto-approve "tf_plan"
+   
+  terraform_apply_prod:
+    runs-on: ubuntu-latest
+    needs: [terraform_plan_prod]
+    defaults:
+      run:
+        shell: bash
+        working-directory: prod
+    
+    environment:
+       name: tf_apply
+    
+    steps:
+    
+      - uses: actions/checkout@v2
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      
+      - name: Download TF Plan
+        uses: actions/download-artifact@v2
+        with:
+          name: tf_plan_prod
+          path: ./prod/
+      - name: Terraform Apply
+        run: |
+          #cat "tf_plan"
+          terraform init
+          terraform show "tf_plan_prod"
+          terraform apply -auto-approve "tf_plan_prod"
