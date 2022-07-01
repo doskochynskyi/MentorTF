@@ -6,11 +6,12 @@ module "network" {
 
 }
 
-module "firewall" {
+/*
+  module "firewall" {
   source = "github.com/doskochynskyi/MentorTFModules.git//modules/firewall"
 
   region = var.region
   resource_group = "RG${var.prefix}"
   fwnet_id = module.network.fwnet_id
 }
-
+*/
