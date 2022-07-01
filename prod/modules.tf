@@ -5,7 +5,7 @@ module "network" {
   resource_group = "RG${var.prefix}"
 
 }
-
+/*
 module "firewall" {
   source = "github.com/doskochynskyi/MentorTFModules.git//modules/firewall"
 
@@ -13,4 +13,4 @@ module "firewall" {
   resource_group = "RG${var.prefix}"
   fwnet_id = module.network.fwnet_id
 }
-
+*/
