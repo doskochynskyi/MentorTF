@@ -3,6 +3,10 @@ module "network" {
 
   region = var.region
   resource_group = "RG${var.prefix}"
+  vnet_address_space = "192.168.0.0/16"
+  subnet_firewall_address_space = "192.168.151.0/24"
+  subnet_aci_address_space = "192.168.152.0/24"
+  
 
 }
 /*
