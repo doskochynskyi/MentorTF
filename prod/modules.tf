@@ -5,7 +5,7 @@ module "network" {
   prefix = "${var.prefix}"
   resource_group = "RG${var.prefix}"
   vnet_address_space = ["192.168.150.0/24"]
-  subnet_firewall_address_space = "192.168.150.0/26"
+  subnet_firewall_address_space = ["192.168.150.0/26"]
   subnet_aci_address_space = ["192.168.150.64/26"]
   
 
