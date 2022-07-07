@@ -4,9 +4,9 @@ module "network" {
   region = var.region
   prefix = "${var.prefix}"
   resource_group = "RG${var.prefix}"
-  vnet_address_space = ["192.168.136.0/21"]
-  subnet_firewall_address_space = "192.168.136.0/24"
-  subnet_aci_address_space = ["192.168.137.0/24"]
+  vnet_address_space = ["192.168.151.0/24"]
+  subnet_firewall_address_space = ["192.168.151.0/26"]
+  subnet_aci_address_space = ["192.168.151.64/26"]
 }
 
 /*
