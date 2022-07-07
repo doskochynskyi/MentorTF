@@ -8,7 +8,6 @@ module "network" {
   subnet_firewall_address_space = ["192.168.150.0/26"]
   subnet_aci_address_space = ["192.168.150.64/26"]
   
-
 }
 /*
 module "firewall" {
