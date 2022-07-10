@@ -182,6 +182,7 @@ jobs:
 
         - name: Push to MentorGit
           run: |
+            cat ./MentorGit/deploy-env/dev/envdataTF
             cd ./MentorGit            
             git add .
             git config user.name Ivan
