@@ -163,7 +163,7 @@ jobs:
           uses: actions/checkout@master
           with: 
             repository: doskochynskyi/MentorGit
-            #token: ${{ secrets.ACTIONS_TOKEN }}
+            token: ${{ secrets.GA_PushToMentorGit }}
             path: ./MentorGit
 
         - name: Copy/Create file
