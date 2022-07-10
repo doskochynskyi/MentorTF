@@ -148,3 +148,43 @@ jobs:
           terraform init
           terraform show "tf_plan_prod"
           terraform apply -auto-approve "tf_plan_prod"
+    
+  push_to_source_repo:
+        runs-on: ubuntu-latest
+        name: Push to source repo
+
+        steps:
+        #- name: Checkout Project A
+        #  uses: actions/checkout@v2
+        #  with:
+        #   path: ./projectA
+
+        - name: Checkout source repo
+          uses: actions/checkout@master
+          with: 
+            repository: doskochynskyi/MentorGit
+            #token: ${{ secrets.ACTIONS_TOKEN }}
+            path: ./MentorGit
+
+        - name: Copy/Create file
+          run: |
+            devEnvFile=./envdataTF
+            echo "RESOURCE_GROUP=RGdev" > $devEnvFile
+            echo "someval=somedata"
+            if [ -f "$devEnvFile" ]; then
+              echo "Copying $FILE"
+              cp -R ./envdataTF ./MentorGit/deploy-env/dev/
+            else 
+              echo "Creating $FILE"
+              touch ./envdataTF
+            fi
+            cat ./MentorGit/deploy-env/dev/envdataTF
+
+        - name: Push to MentorGit
+          run: |
+            cd ./MentorGit            
+            git add .
+            git config user.name Ivan
+            git config user.email ivan.doskochynskyi@gmail.com
+            git commit -am "Config file copied from MentorTF module"
+            git push
