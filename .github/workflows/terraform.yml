@@ -168,24 +168,31 @@ jobs:
 
         - name: Copy/Create file
           run: |
-            devEnvFile=./envdataTF
+            devEnvFile=./envdata
             echo "RESOURCE_GROUP=RGdev" > $devEnvFile
-            echo "VNET_NAME=tfvnetdev" >> $devEnvFile
-            if [ -f "$devEnvFile" ]; then
+            echo "VNET_NAME=tfvnetdev1" >> $devEnvFile
+            if [ diff "./MentorGit/deploy-env/dev/" "$devEnvFile" ]; then
               echo "Copying $FILE"
-              cp -R ./envdataTF ./MentorGit/deploy-env/dev/
+              cp -R ./envdata ./MentorGit/deploy-env/dev/
+              cat ./MentorGit/deploy-env/dev/envdata
+              cd ./MentorGit            
+              git add .
+              git config user.name Ivan
+              git config user.email ivan.doskochynskyi@gmail.com
+              git commit -am "Config file copied from MentorTF module"
+              git push
             else 
-              echo "Creating $FILE"
-              touch ./envdataTF
+              echo "files are equal"
+              # touch ./envdataTF
             fi
-            cat ./MentorGit/deploy-env/dev/envdataTF
+            
 
-        - name: Push to MentorGit
-          run: |
-            cat ./MentorGit/deploy-env/dev/envdataTF
-            cd ./MentorGit            
-            git add .
-            git config user.name Ivan
-            git config user.email ivan.doskochynskyi@gmail.com
-            git commit -am "Config file copied from MentorTF module"
-            git push
+        #- name: Push to MentorGit
+        #  run: |
+        #    cat ./MentorGit/deploy-env/dev/envdataTF
+        #    cd ./MentorGit            
+        #    git add .
+        #    git config user.name Ivan
+        #    git config user.email ivan.doskochynskyi@gmail.com
+        #    git commit -am "Config file copied from MentorTF module"
+        #    git push
