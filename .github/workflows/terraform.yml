@@ -168,6 +168,8 @@ jobs:
 
         - name: Copy/Create file
           run: |
+            mkdir ./dev
+            mkdir ./prod
             devEnvFile=./dev/envdata
             echo "RESOURCE_GROUP=RGdev" > $devEnvFile
             echo "VNET_NAME=tfvnetdev" >> $devEnvFile
