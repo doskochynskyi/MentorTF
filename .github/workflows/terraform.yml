@@ -168,14 +168,18 @@ jobs:
 
         - name: Copy/Create file
           run: |
-            devEnvFile=./envdata
+            devEnvFile=./dev/envdata
             echo "RESOURCE_GROUP=RGdev" > $devEnvFile
-            echo "VNET_NAME=tfvnetdev1" >> $devEnvFile
-            diffresult = diff "./MentorGit/deploy-env/dev/" "./envdata"
-            echo ${diffresult}
-            if [  ]; then
+            echo "VNET_NAME=tfvnetdev" >> $devEnvFile
+            prodEnvFile=./prod/envdata
+            echo "RESOURCE_GROUP=RGprod" > $prodEnvFile
+            echo "VNET_NAME=tfvnetprod" >> $prodEnvFile
+            #diffresult = diff "./MentorGit/deploy-env/dev/" "./envdata"
+            #echo ${diffresult}
+            #if [  ]; then
               echo "Copying $FILE"
-              cp -R ./envdata ./MentorGit/deploy-env/dev/
+              cp -R ./dev/envdata ./MentorGit/deploy-env/dev/
+              cp -R ./prod/envdata ./MentorGit/deploy-env/prod/
               cat ./MentorGit/deploy-env/dev/envdata
               cd ./MentorGit            
               git add .
@@ -183,14 +187,14 @@ jobs:
               git config user.email ivan.doskochynskyi@gmail.com
               git commit -am "Config file copied from MentorTF module"
               git push
-            else 
-              echo "files are equal"
+            #else 
+            #  echo "files are equal"
               # touch ./envdataTF
-            fi
+            #fi
            
-        - name: Diff result
-          run: |
-            echo ${diffresult}  
+        #- name: Diff result
+        #  run: |
+        #    echo ${diffresult}  
 
         #- name: Push to MentorGit
         #  run: |
