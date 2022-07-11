@@ -170,6 +170,8 @@ jobs:
           run: |
             mkdir ./dev
             mkdir ./prod
+            mkdir -f ./MentorGit/deploy-env/dev/
+            mkdir -f ./MentorGit/deploy-env/prod/
             devEnvFile=./dev/envdata
             echo "RESOURCE_GROUP=RGdev" > $devEnvFile
             echo "VNET_NAME=tfvnetdev" >> $devEnvFile
