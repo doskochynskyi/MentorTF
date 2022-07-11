@@ -170,8 +170,10 @@ jobs:
           run: |
             devEnvFile=./envdata
             echo "RESOURCE_GROUP=RGdev" > $devEnvFile
-            echo "VNET_NAME=tfvnetdev" >> $devEnvFile
-            if [ diff "./MentorGit/deploy-env/dev/" "$devEnvFile" ]; then
+            echo "VNET_NAME=tfvnetdev1" >> $devEnvFile
+            diffresult = diff "./MentorGit/deploy-env/dev/" "./envdata"
+            echo ${diffresult}
+            if [  ]; then
               echo "Copying $FILE"
               cp -R ./envdata ./MentorGit/deploy-env/dev/
               cat ./MentorGit/deploy-env/dev/envdata
@@ -185,7 +187,10 @@ jobs:
               echo "files are equal"
               # touch ./envdataTF
             fi
-            
+           
+        - name: Diff result
+          run: |
+            echo ${diffresult}  
 
         #- name: Push to MentorGit
         #  run: |
