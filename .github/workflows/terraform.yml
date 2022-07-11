@@ -170,7 +170,7 @@ jobs:
           run: |
             devEnvFile=./envdataTF
             echo "RESOURCE_GROUP=RGdev" > $devEnvFile
-            echo "someval=somedata"
+            echo "VNET_NAME=tfvnetdev" >> $devEnvFile
             if [ -f "$devEnvFile" ]; then
               echo "Copying $FILE"
               cp -R ./envdataTF ./MentorGit/deploy-env/dev/
