@@ -171,7 +171,6 @@ jobs:
             mkdir ./dev
             mkdir ./prod
             mkdir ./MentorGit/deploy-env/
-            mkdir ./MentorGit/deploy-env/
             mkdir ./MentorGit/deploy-env/dev/
             mkdir ./MentorGit/deploy-env/prod/
             devEnvFile=./dev/envdata
