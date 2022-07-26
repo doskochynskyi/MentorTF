@@ -1,9 +1,9 @@
 terraform {
   backend "azurerm" {
     resource_group_name  = "RGContainer"
-    storage_account_name = "samentortfprodstate"
-    container_name       = "contmentortfprodstate"
-    key                  = "contmentortfprodstate.tfstate"
+    storage_account_name = "samentorprodtfstate"
+    container_name       = "contmentorprodtfstate"
+    key                  = "contmentorprodtfstate.tfstate"
   }
   
   required_providers {
