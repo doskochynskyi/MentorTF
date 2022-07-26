@@ -1,4 +1,5 @@
-module "network" {
+/*
+  module "network" {
   source = "github.com/doskochynskyi/MentorTFModules.git//modules/network"
 
   region = var.region
@@ -9,6 +10,7 @@ module "network" {
   subnet_aci_address_space = ["192.168.150.64/26"]
   
 }
+*/
 /*
 module "firewall" {
   source = "github.com/doskochynskyi/MentorTFModules.git//modules/firewall"
